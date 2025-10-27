@@ -1,16 +1,13 @@
 {
-  "name": "server",
+  "name": "calendar-server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "build": "cd ../client && npm install && npm run build && rm -rf ../server/public && mkdir -p ../server/public && cp -r build/* ../server/public/"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^5.1.0"
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
   }
 }

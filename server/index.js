@@ -4,11 +4,14 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const DATA_FILE = path.join(__dirname, "notes.json");
 
 app.use(cors());
 app.use(express.json());
+
+// ✅ React 정적 파일 제공
+app.use(express.static(path.join(__dirname, "public")));
 
 // 📖 저장된 메모 가져오기
 app.get("/api/notes", (req, res) => {
@@ -45,6 +48,11 @@ app.post("/api/notes", (req, res) => {
       res.json({ success: true });
     });
   });
+});
+
+// ✅ React SPA 대응 (모든 경로를 index.html로 리턴)
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
