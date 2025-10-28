@@ -1,13 +1,16 @@
 {
   "name": "calendar-server",
   "version": "1.0.0",
+  "description": "Backend server for calendar project",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "build": "cd ../client && npm install && npm run build && rm -rf ../server/public && mkdir -p ../server/public && cp -r build/* ../server/public/"
+    "start": "node index.js"
   },
   "dependencies": {
-    "express": "^4.18.2",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=18"
   }
 }
